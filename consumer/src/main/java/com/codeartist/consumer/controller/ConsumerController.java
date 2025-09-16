@@ -1,5 +1,6 @@
 package com.codeartist.consumer.controller;
 
+import com.codeartist.consumer.routing.ProductClient;
 import jdk.jfr.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -16,21 +17,14 @@ import java.sql.SQLOutput;
 @RestController
 @RequestMapping("/consumer")
 public class ConsumerController {
+
     @Autowired
-    RestClient restClient;
+    ProductClient productClient;
     @GetMapping("/{id}")
     public ResponseEntity<String> getProducerFrmConsumer(@PathVariable String id){
-        String response1 = restClient.get()
-                .uri("http://localhost:8082/producer/"+id)
 
-                .retrieve().onStatus(response -> {
-                    if(response.getStatusCode().is4xxClientError()){
-                        throw new IOException("Throw exception");
-                    }
-                    return false ;
-                }).body(String.class);
-
-        return ResponseEntity.ok("called producer"+response1);
+    String response = productClient.getProduct(id);
+        return ResponseEntity.ok("called producer"+response);
     }
 
 }
