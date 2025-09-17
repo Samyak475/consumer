@@ -1,5 +1,7 @@
 package com.codeartist.consumer.config;
 
+import com.codeartist.consumer.decoderandencoder.myCustomDecoder;
+import com.codeartist.consumer.decoderandencoder.myCustomEncoder;
 import com.codeartist.consumer.decoderandencoder.myCustomRetryer;
 import feign.Retryer;
 import feign.codec.Decoder;
@@ -15,12 +17,12 @@ public class SecConfig {
 
     @Bean
     public Decoder myCustomDecoder(){
-        return myCustomDecoder();
+        return new myCustomDecoder();
     }
 
     @Bean
     public Encoder myCustomEncoder(){
-        return myCustomEncoder();
+        return new myCustomEncoder();
     }
 
     @Bean
