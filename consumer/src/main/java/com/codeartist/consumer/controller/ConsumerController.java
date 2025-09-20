@@ -27,9 +27,9 @@ public class ConsumerController {
 
     @GetMapping("/{id}")
     public ResponseEntity<String> getProducerFrmConsumer(@PathVariable String id){
-        List<ServiceInstance> serviceInstances = discoveryClient.getInstances("producer-service");
-        URI  uri = serviceInstances.get(0).getUri();
-        String response = restTemplate.getForObject(uri+"/producer/"+id,String.class);
+//        List<ServiceInstance> serviceInstances = discoveryClient.getInstances("producer-service");
+//        URI  uri = serviceInstances.get(0).getUri();
+        String response = restTemplate.getForObject("http://producer-service"+"/producer/"+id,String.class);
 
         return ResponseEntity.ok("called producer"+ response);
     }
