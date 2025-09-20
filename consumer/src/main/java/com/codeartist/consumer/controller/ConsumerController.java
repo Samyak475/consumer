@@ -1,6 +1,7 @@
 package com.codeartist.consumer.controller;
 
 import com.codeartist.consumer.routing.ProductClient;
+import com.codeartist.consumer.service.ConsumerService;
 import jdk.jfr.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -19,12 +20,12 @@ import java.sql.SQLOutput;
 public class ConsumerController {
 
     @Autowired
-    ProductClient productClient;
+    ConsumerService consumerService;
     @GetMapping("/{id}")
     public ResponseEntity<String> getProducerFrmConsumer(@PathVariable String id){
-
-    String response = productClient.getProduct(id);
-        return ResponseEntity.ok("called producer"+response);
+        consumerService.getAllProducer(id);
+//    String response = productClient.getProduct(id);
+        return ResponseEntity.ok("called producer");
     }
 
 }
