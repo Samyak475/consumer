@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class SecConfig {
 
     @Bean
-    @LoadBalanced
+    @LoadBalanced  // this annotaion will call service discovery get all instances and then call the load balancer algo using service id
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }
