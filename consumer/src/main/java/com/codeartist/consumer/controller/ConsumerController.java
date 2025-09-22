@@ -19,6 +19,7 @@ import java.sql.SQLOutput;
 @RequestMapping("/consumer")
 public class ConsumerController {
 
+
     @Autowired
     ConsumerService consumerService;
     @GetMapping("/{id}")
@@ -26,6 +27,7 @@ public class ConsumerController {
         consumerService.getAllProducer(id);
 //    String response = productClient.getProduct(id);
         return ResponseEntity.ok("called producer");
+
     }
 
 }
